@@ -2,10 +2,10 @@
 package main
 
 import (
-	"fmt"
 )
 
 func main() {
+
 
 	// person := Person{
 	// 	Name: "fff",
@@ -81,4 +81,4 @@ func main() {
 // 	human
 // 	Name string
 // 	Age  int
-// }
+}
