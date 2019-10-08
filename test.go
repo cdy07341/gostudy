@@ -1,26 +1,37 @@
 package main
 
 import (
-	"encoding/csv"
 	"fmt"
-	"github.com/baidubce/bce-sdk-go/util/log"
-	"os"
+	"io/ioutil"
 )
 
+type Page struct {
+	Title string
+	Body  []byte
+}
+
+func (this *Page) save() error {
+	return ioutil.WriteFile(this.Title, this.Body, 0666)
+}
+
+func (this *Page) load(title string) error {
+	var err error
+	this.Title = title
+	this.Body, err = ioutil.ReadFile(title)
+
+	return err
+}
+
 func main() {
-	fileName := "a.csv"
-	file, e := os.Open(fileName)
-	if nil != e {
-		log.Fatal(e.Error())
+	page := &Page{
+		Title: "test.log",
+		Body:  []byte("# Page\n## Section1\nThis is section1."),
 	}
 
-	reader := csv.NewReader(file)
+	page.save()
 
-	line, err := reader.ReadAll()
-	if nil != err {
-		log.Fatal(err.Error())
-	}
-
-	fmt.Println(line)
+	var newPage Page
+	newPage.load("test.log")
+	fmt.Println(string(newPage.Body))
 
 }
