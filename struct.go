@@ -1,11 +1,9 @@
 // struct
 package main
 
-import (
-)
+import ()
 
 func main() {
-
 
 	// person := Person{
 	// 	Name: "fff",
@@ -81,4 +79,4 @@ func main() {
 // 	human
 // 	Name string
 // 	Age  int
-}
+//}
