@@ -19,6 +19,7 @@ func main() {
 			Run()
 		fmt.Println(err)
 	} else {
+		flag.PrintDefaults()
 		fmt.Println("table empty")
 	}
 
